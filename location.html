@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Location</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Poppins font and a light background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        /* Ensure iframe is responsive */
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            /* Adjust the padding-top percentage to control the aspect ratio */
+            /* 56.25% for 16:9 aspect ratio */
+            /* 75% for 4:3 aspect ratio */
+            padding-top: 56.25%; /* Example: 16:9 aspect ratio */
+            height: 0;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0; /* Remove default iframe border */
+        }
+        .right-header {
+          font-family: Montserrat;
+      }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <header>
+    <div class="right-header">
+        <h4><span class="des-span">Port</span><span class="phixs-span">folio</span></h4>
+    </div>
+    <div class="middle-header">
+        <div class="nav-links">
+          <ul class="nav__links">
+            <li><a href="portfolio.html"><i class="fas fa-home"></i> &nbsp; Home</a></li>
+            <li><a href="homie.html"><i class="fas fa-user"></i> &nbsp; About</a></li>
+            <li><a href="interests.html"><i class="fas fa-briefcase"></i> &nbsp; Interest</a></li>
+            <li><a href="location.html"><i class="fas fa-briefcase"></i> &nbsp; Location</a></li>
+        </ul>
+        </div>
+    </div>
+    <div class="left-header">
+        <div class="social-links">
+          <ul class="social__links">
+            <li class="facebook"><a href="https://www.facebook.com/tizon.km"><i class="fab fa-facebook"></i></a></li>
+            <li class="instagram"><a href="https://www.instagram.com/ovx1e/?next=%2F"><i class="fab fa-twitter"></i></a></li>
+            
+        </ul>
+        </div>
+    </div>
+
+    <div class="mobile-nav">
+        <a class="toggle-btn"><i class="fas fa-bars"></i></a>
+        <p></p>
+    </div>
+    
+</header>
+
+    <main class="container mx-auto my-12 p-6 bg-white rounded-lg shadow-xl flex-grow">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800 text-center">My Location</h2>
+
+        <div class="map-container rounded-md overflow-hidden shadow-lg">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3864.151543224594!2d121.00116661121844!3d14.418426185988462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d1939e80e859%3A0x5402544a992abdba!2sPAG-IBIG%203%20DAY%20CARE%20CENTER!5e0!3m2!1sen!2sph!4v1745392009839!5m2!1sen!2sph" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <div class="mt-8 text-center text-gray-700">
+            <p>You can find me in Las Pinas City, Metro Manila, Philippines.</p>
+            </div>
+
+    </main>
+
+  
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <style>
+    .interests-section {
+        width: 100%;
+        max-width: 1000px; /* Adjust max width as needed */
+        margin: 40px auto; /* Center the section and add vertical space */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .interests-section h2 {
+        font-size: 2em;
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .slider-container {
+        position: relative;
+        overflow: hidden; /* Hide parts of images outside the container */
+        padding: 0 40px; /* Add padding for arrows to sit outside */
+    }
+
+    .slider {
+        display: flex;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        scroll-behavior: smooth; /* Smooth scrolling effect */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+        scrollbar-width: none; /* Hide scrollbar (Firefox) */
+         /* Remove default scrollbar for Webkit browsers */
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .slider img {
+        flex-shrink: 0; /* Prevent images from shrinking */
+        width: 250px; /* Set a fixed width for images */
+        height: 350px; /* Set a fixed height for images */
+        object-fit: cover; /* Crop images to cover the area */
+        margin-right: 20px; /* Space between images */
+        border-radius: 8px; /* Slightly rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    /* Remove margin-right for the last image */
+    .slider img:last-child {
+        margin-right: 0;
+    }
+
+    .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+        border: none;
+        border-radius: 50%;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 10; /* Ensure buttons are above images */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-button:hover {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .nav-button i {
+        font-size: 20px;
+        color: #555;
+    }
+
+    #prevBtn {
+        left: 0; /* Position on the left */
+    }
+
+    #nextBtn {
+        right: 0; /* Position on the right */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .interests-section h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .slider-container {
+             padding: 0 20px; /* Reduce padding on smaller screens */
+        }
+
+        .slider img {
+            width: 200px; /* Adjust image size */
+            height: 300px;
+            margin-right: 15px;
+        }
+
+         .nav-button {
+             padding: 8px; /* Adjust button size */
+         }
+
+         .nav-button i {
+             font-size: 16px; /* Adjust icon size */
+         }
+
+         #prevBtn {
+             left: 5px; /* Adjust position */
+         }
+
+         #nextBtn {
+             right: 5px; /* Adjust position */
+         }
+    }
+
+     @media (max-width: 480px) {
+          .interests-section h2 {
+             font-size: 1.2em;
+         }
+         .slider img {
+             width: 150px;
+             height: 250px;
+             margin-right: 10px;
+         }
+         .slider-container {
+             padding: 0 10px;
+         }
+         .nav-button {
+             padding: 5px;
+         }
+          .nav-button i {
+             font-size: 14px;
+         }
+          #prevBtn {
+             left: 0;
+         }
+
+         #nextBtn {
+             right: 0;
+         }
+     }
+     main{
+        margin-top: 7%;
+     }
+     .right-header {
+        font-family: Montserrat;
+    }
+     
+</style>
+</head>
+<body>
+    <header>
+        <div class="right-header">
+            <h4><span class="des-span">Port</span><span class="phixs-span">folio</span></h4>
+        </div>
+        <div class="middle-header">
+            <div class="nav-links">
+                <ul class="nav__links">
+                    <li><a href="portfolio.html"><i class="fas fa-home"></i> &nbsp; Home</a></li>
+                    <li><a href="homie.html"><i class="fas fa-user"></i> &nbsp; About</a></li>
+                    <li><a href="interests.html"><i class="fas fa-briefcase"></i> &nbsp; Interest</a></li>
+                    <li><a href="location.html"><i class="fas fa-briefcase"></i> &nbsp; Location</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="left-header">
+            <div class="social-links">
+                <ul class="social__links">
+                    <li class="facebook"><a href="https://www.facebook.com/tizon.km"><i class="fab fa-facebook"></i></a></li>
+                    <li class="instagram"><a href="https://www.instagram.com/ovx1e/?next=%2F"><i class="fab fa-twitter"></i></a></li>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <div class="mobile-nav">
+            <a class="toggle-btn"><i class="fas fa-bars"></i></a>
+            <p></p>
+        </div>
+        
+    </header>
+
+
+    <section class="interests-section">
+        <h2>IM INTERESTED TO:</h2>
+
+        <div class="slider-container">
+            <div class="slider" id="interests-slider">
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/coding.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/develop.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/fixing.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/cyber.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/languages.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/app.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/develop.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/fixing.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/cyber.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/languages.jpg" width="300"/>
+            </div>
+
+            <button id="prevBtn" class="nav-button">
+                 <i class="fas fa-chevron-left"></i> </button>
+            <button id="nextBtn" class="nav-button">
+                 <i class="fas fa-chevron-right"></i> </button>
+        </div>
+        <main class="max-w-4xl mx-auto px-6 py-12">
+            <h2 class="text-xl text-blue-600 font-light mb-4">
+            Welcome!
+            </h2>
+            <p class="text-base font-normal leading-relaxed">
+                My name is Kayla Tizon, and I am an IT Student currently pursuing my studies at CvSU - Bacoor Cavite Campus. Residing in Las Pinas City, I am deeply interested in exploring the vast landscape of the Information Technology industry and am particularly driven by the aspiration to develop innovative systems in the future. I am eager to learn and gain practical experience to achieve this goal.
+            </p>
+         </main>
+    </section>
+
+    
+
+    <script>
+        const slider = document.getElementById('interests-slider');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+    
+        // Function to calculate the width of one slide including its margin
+        function getSlideWidth() {
+             const firstSlide = slider.querySelector('img');
+             if (!firstSlide) {
+                 console.log("getSlideWidth: No images found in slider!");
+                 return 0;
+             }
+             const slideStyles = getComputedStyle(firstSlide);
+             // Ensure margin-right is a number, default to 0 if not found
+             const slideMarginRight = parseFloat(slideStyles.marginRight) || 0;
+             const width = firstSlide.offsetWidth + slideMarginRight;
+             console.log(`getSlideWidth: Image offsetWidth: ${firstSlide.offsetWidth}, MarginRight: ${slideMarginRight}, Calculated Slide Width: ${width}`);
+             return width;
+        }
+    
+    
+        // Manual navigation
+        prevBtn.addEventListener('click', () => {
+            console.log("Prev button clicked");
+            stopAutoSlide(); // Stop auto-slide on manual click
+            slider.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
+            startAutoSlideAfterDelay(); // Optionally restart after a delay
+        });
+    
+        nextBtn.addEventListener('click', () => {
+             console.log("Next button clicked");
+             stopAutoSlide(); // Stop auto-slide on manual click
+             slider.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
+             startAutoSlideAfterDelay(); // Optionally restart after a delay
+        });
+    
+        // Auto-slide functionality
+        let autoSlideInterval;
+        const slideIntervalTime = 3000; // Time in milliseconds (e.g., 3000ms = 3 seconds)
+        const userInteractionDelay = 5000; // Delay after user interaction before restarting auto-slide
+    
+    
+        function startAutoSlide() {
+             // Only start if an interval isn't already running
+             if (!autoSlideInterval) {
+                console.log("Starting auto slide");
+                autoSlideInterval = setInterval(() => {
+                     //console.log("Auto-slide interval tick"); // Uncomment for frequent logs
+                     const currentScrollLeft = slider.scrollLeft;
+                     const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+                     const slideWidth = getSlideWidth();
+    
+                     // Check if the slider is actually scrollable
+                     if (slider.scrollWidth <= slider.clientWidth) {
+                         console.log("Slider not scrollable, stopping auto slide.");
+                         stopAutoSlide();
+                         // Optionally hide buttons if not scrollable
+                         prevBtn.style.display = 'none';
+                         nextBtn.style.display = 'none';
+                         return; // Exit the interval function
+                     }
+    
+                     // Check if we are at the end of the slider (allowing for tiny floating point inaccuracies)
+                     // Check if currentScrollLeft is close to maxScrollLeft
+                    if (Math.abs(currentScrollLeft - maxScrollLeft) < 1) { // Check if we are very close to the end
+                        console.log("Reached end or close to end, jumping to start");
+                        // If at the end, jump back to the start instantly
+                        slider.scrollTo({ left: 0, behavior: 'auto' });
+                         // Then smooth scroll to the second image to make it look like a continuous loop
+                         // We scroll by one slide width from the start (position 0)
+                         setTimeout(() => {
+                              console.log("Scrolling after jump");
+                              slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
+                         }, 50); // Small delay to allow jump to register
+                    } else {
+                        // If not at the end, scroll to the next slide
+                        console.log("Scrolling to next slide");
+                        slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
+                    }
+                }, slideIntervalTime);
+             }
+        }
+    
+        function stopAutoSlide() {
+            if (autoSlideInterval) {
+                 console.log("Stopping auto slide");
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null; // Reset the interval ID
+            }
+        }
+    
+        // Function to start auto-slide after a delay (useful after user interaction)
+        let autoSlideTimeout;
+        function startAutoSlideAfterDelay() {
+            stopAutoSlide(); // Stop any existing auto-slide
+            clearTimeout(autoSlideTimeout); // Clear any pending delayed start
+            autoSlideTimeout = setTimeout(startAutoSlide, userInteractionDelay);
+            console.log(`Auto slide will restart in ${userInteractionDelay / 1000} seconds.`);
+        }
+    
+    
+        // Start auto-sliding when the page loads, ensuring images have time to load
+        // Use window.onload to wait for all resources (including images) to load
+        window.addEventListener('load', () => {
+             console.log("Window loaded, checking slider scrollability.");
+            // Check if the slider is actually scrollable
+            if (slider.scrollWidth > slider.clientWidth) {
+                 console.log("Slider is scrollable. Starting auto slide.");
+                 startAutoSlide();
+            } else {
+                 console.log("Slider is NOT scrollable (content width <= container width). Auto slide will not start.");
+                 // Optionally hide buttons if not scrollable
+                 prevBtn.style.display = 'none';
+                 nextBtn.style.display = 'none';
+            }
+             // Also calculate initial slide width after load
+             getSlideWidth();
+        });
+    
+    
+        // Optional: Stop auto-sliding when the user interacts with the slider
+        slider.addEventListener('mouseover', stopAutoSlide);
+        slider.addEventListener('mouseout', startAutoSlideAfterDelay); // Restart after mouse leaves
+    
+        // Buttons already stop auto-slide inside their click handlers
+        // prevBtn.addEventListener('click', stopAutoSlide);
+        // nextBtn.addEventListener('click', stopAutoSlide);
+    
+         // Stop auto-slide if the window loses focus
+        window.addEventListener('blur', stopAutoSlide);
+        // Resume auto-slide when the window regains focus (after a delay)
+        window.addEventListener('focus', startAutoSlideAfterDelay);
+    
+    
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Poppins font and a light background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        /* Basic styling for form elements focus state */
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #6366f1; /* Tailwind indigo-500 */
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3); /* Tailwind indigo-500 with opacity */
+        }
+
+        /* Styles for the custom message box */
+        .message-box-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensure it's on top of other content */
+            visibility: hidden; /* Hidden by default */
+            opacity: 0; /* Start fully transparent */
+            transition: visibility 0s, opacity 0.3s ease-in-out; /* Smooth fade-in */
+        }
+
+        .message-box-overlay.visible {
+            visibility: visible;
+            opacity: 1; /* Fade in */
+        }
+
+        .message-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 400px; /* Limit max width */
+            width: 90%; /* Responsive width */
+            position: relative; /* Needed for close button positioning */
+        }
+
+        .message-box h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .message-box p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .message-box .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+            color: #aaa;
+            transition: color 0.2s ease;
+        }
+
+        .message-box .close-btn:hover {
+            color: #777;
+        }
+        .right-header {
+          font-family: Montserrat;
+      }
+
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <header>
+        <div class="right-header">
+            <h4><span class="des-span">Port</span><span class="phixs-span">folio</span></h4>
+        </div>
+        <div class="middle-header">
+            <div class="nav-links">
+              <ul class="nav__links">
+                <li><a href="portfolio.html"><i class="fas fa-home"></i> &nbsp; Home</a></li>
+                <li><a href="homie.html"><i class="fas fa-user"></i> &nbsp; About</a></li>
+                <li><a href="interests.html"><i class="fas fa-briefcase"></i> &nbsp; Interest</a></li>
+                <li><a href="location.html"><i class="fas fa-briefcase"></i> &nbsp; Location</a></li>
+            </ul>
+            </div>
+        </div>
+        <div class="left-header">
+            <div class="social-links">
+              <ul class="social__links">
+                <li class="facebook"><a href="https://www.facebook.com/tizon.km"><i class="fab fa-facebook"></i></a></li>
+                <li class="instagram"><a href="https://www.instagram.com/ovx1e/?next=%2F"><i class="fab fa-twitter"></i></a></li>
+                
+            </ul>
+            </div>
+        </div>
+
+        <div class="mobile-nav">
+             <a class="toggle-btn"><i class="fas fa-bars"></i></a>
+        </div>
+
+    </header>
+
+    <main class="container mx-auto my-12 p-6 bg-white rounded-lg shadow-xl flex-grow">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+            <div class="contact-form">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">Get in Touch</h2>
+                <p class="mb-8 text-gray-600">Have a question or want to work together? Fill out the form below.</p>
+
+                <form id="contactForm" action="#" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                        <input type="text" id="subject" name="subject" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                        <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">Contact Information</h2>
+                <p class="mb-8 text-gray-600">Feel free to reach out through other channels as well.</p>
+
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-envelope text-indigo-600 mr-3 text-xl"></i>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Email</h3>
+                            <p class="text-gray-600">kaylatizon5@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-phone-alt text-indigo-600 mr-3 text-xl"></i>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Phone</h3>
+                            <p class="text-gray-600">+63 961 287 1128</p> </div>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt text-indigo-600 mr-3 text-xl"></i>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Location</h3>
+                            <p class="text-gray-600">Las Pinas City, Metro Manila, Philippines</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <h3 class="text-lg font-semibold mb-4 text-gray-800">Connect with Me</h3>
+                    <div class="flex space-x-6 text-2xl">
+                        <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-blue-400 transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-600 hover:text-pink-600 transition duration-300"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="messageBoxOverlay" class="message-box-overlay">
+        <div class="message-box">
+            <button id="closeMessageBox" class="close-btn">&times;</button> <h3>Thank You!</h3>
+            <p id="messageBoxText">Your message has been sent successfully.</p>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the form and message box elements
+        const contactForm = document.getElementById('contactForm');
+        const messageBoxOverlay = document.getElementById('messageBoxOverlay');
+        const messageBoxText = document.getElementById('messageBoxText');
+        const closeMessageBoxBtn = document.getElementById('closeMessageBox');
+
+        // Add event listener for form submission
+        contactForm.addEventListener('submit', function(event) {
+            // Prevent the default form submission (which would reload the page)
+            event.preventDefault();
+
+            // In a real application, you would send the form data to a server here
+            // using fetch() or XMLHttpRequest. For this example, we'll just simulate success.
+
+            console.log("Form submitted!"); // Log to console for testing
+
+            // Display the message box
+            showMessageBox("Your message has been sent successfully."); // Message for the box
+
+            // Optional: Reset the form fields after a successful submission
+            contactForm.reset();
+        });
+
+        // Function to display the message box
+        function showMessageBox(message) {
+            messageBoxText.textContent = message; // Set the message text
+            messageBoxOverlay.classList.add('visible'); // Make the overlay visible
+        }
+
+        // Function to hide the message box
+        function hideMessageBox() {
+            messageBoxOverlay.classList.remove('visible'); // Hide the overlay
+        }
+
+        // Add event listener to the close button
+        closeMessageBoxBtn.addEventListener('click', hideMessageBox);
+
+        // Optional: Hide message box if clicking outside the box
+        messageBoxOverlay.addEventListener('click', function(event) {
+            // Check if the click was directly on the overlay, not the message box itself
+            if (event.target === messageBoxOverlay) {
+                hideMessageBox();
+            }
+        });
+
+        // Add event listener for mobile navigation toggle (assuming you have this JS elsewhere)
+        // You might need to integrate this with your existing script.js
+        const toggleBtn = document.querySelector('.mobile-nav .toggle-btn');
+        const sidebar = document.getElementById('mobile-nav'); // Make sure this ID matches your sidebar
+
+        if (toggleBtn && sidebar) {
+             toggleBtn.addEventListener('click', () => {
+                 sidebar.classList.toggle('hide'); // Assuming 'hide' class controls visibility
+             });
+        }
+
+
+    </script>
+
+</body>
+</html>

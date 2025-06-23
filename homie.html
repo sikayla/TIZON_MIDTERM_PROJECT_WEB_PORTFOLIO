@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;0,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap" rel="stylesheet"/>
+    <style>
+      body{
+        font-family: 'Poppins', sans-serif; /* Ensure Poppins is used */
+        background-size: cover;
+        background-image: url(images/bg.jpg);
+        background-repeat: no-repeat;
+        /* Consider adding a background-color or image here */
+    }
+    header{
+      background-color: rgb(10, 0, 27);
+      padding: 15px 20px; /* Adjusted vertical padding */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* Added for better padding/border calculation */
+        }
+      
+      
+
+        /* Corrected typo from .h4 to h4 and made selector more specific */
+        .right-header h4{
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px; /* Reduced letter-spacing slightly */
+            padding-left: 0; /* Removed padding-left to control spacing with margin */
+            margin-left: 20px; /* Added margin for spacing from the edge */
+            font-family: Montserrat;
+            font-weight: bold;
+            
+        }
+
+        .des-span{
+            color: white;
+            
+        }
+        .phixs-span{
+            color: antiquewhite;
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s ease; /* Added subtle color transition on hover */
+            font-family: Montserrat;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #ccc; /* Example hover effect */
+        }
+
+        .nav__links{
+            display: flex;
+            gap: 30px; /* Adjusted gap slightly */
+            color: white;
+            align-items: center; /* Vertically align nav items */
+        }
+
+        .nav__links li {
+             list-style: none;
+             border-bottom:#fff; 
+             padding: 5px 0; /* Add some padding for click area */
+        }
+
+        /* Style for the active link - you'd need JS to apply this class */
+        .nav__links li.active a {
+            border-bottom: 1px solid white;
+            padding-bottom: 5px;
+        }
+
+
+        .social__links{
+            display: flex;
+            gap: 15px;
+            padding-right: 0; /* Removed padding-right */
+            margin-right: 20px; /* Added margin for spacing from the edge */
+            align-items: center; /* Vertically align social icons */
+        }
+
+        .social__links li {
+             list-style: none;
+        }
+
+        .social__links a {
+            font-size: 18px; /* Adjust social icon size */
+        }
+
+
+        .mobile-nav{
+            display: none; /* Hidden by default, shown in media query */
+            align-items: center; /* Vertically align mobile toggle */
+            margin-right: 20px; /* Added margin for spacing */
+        }
+
+         .mobile-nav .toggle-btn {
+             color: white; /* Color for the toggle icon */
+             font-size: 24px; /* Size of the toggle icon */
+             cursor: pointer;
+         }
+
+
+        /* Styles for the sidebar - appearance looks okay, focus on display */
+        .side-bar{
+            background-color: #fff;
+            width: 250px; /* Slightly wider sidebar */
+            position: fixed; /* Fix sidebar position */
+            top: 0;
+            right: 0; /* Position on the right */
+            height: 100vh; /* Full viewport height */
+            box-shadow: -5px 0px 15px rgba(0, 0, 0, 0.2); /* Adjusted shadow */
+            border-radius: 0; /* Removed border-radius for full height */
+            z-index: 1000; /* Ensure sidebar is on top */
+            overflow-y: auto; /* Add scroll if content is too long */
+            transition: transform 0.3s ease-in-out; /* Smooth slide in/out */
+            transform: translateX(100%); /* Initially off-screen to the right */
+        }
+
+        .side-bar.open { /* Class to add with JS when sidebar is open */
+             transform: translateX(0); /* Slide in */
+        }
+
+        /* desktop-sidebar class seems redundant with mobile-sidebar display control */
+        .desktop-sidebar{
+             display: none; 
+        }
+
+        .mobile-top-header a{
+            color: rgb(10, 0, 27);
+        }
+
+        .mobile-top-header .nav__links{
+            display: flex;
+            flex-direction: column;
+            /* margin: auto; Removed auto margin */
+            text-align: left;
+            gap: 20px; /* Adjusted gap */
+            color: rgb(10, 0, 27);
+            padding: 30px 20px; /* Adjusted padding */
+        }
+
+        .mobile-bottom-header .mobile-i, .mobile-a{
+            color: rgb(10, 0, 27);
+            font-size: 15px;
+        }
+
+        .mobile-bottom-header .social__links{
+            flex-direction: column;
+            padding: 20px; /* Adjusted padding */
+            gap: 15px; /* Adjusted gap */
+        }
+
+        /* Styling for the standalone H1 below the header */
+        h1.page-title { /* Added a class for specificity and clarity */
+            text-align: center; /* Center the main title */
+            margin: 40px 0; /* Add vertical margin above and below */
+            color: #333; /* Example color */
+            font-size: 2.5em; /* Example font size */
+            font-weight: 600; /* Example font weight */
+            /* Remove Tailwind padding classes if styling here */
+            padding: 0;
+        }
+
+        /* Ensure sections have vertical spacing */
+        section {
+             margin-bottom: 40px; /* Add space between sections */
+        }
+
+        /* Styles for the first section (if you add it back) */
+        /*
+        .first-section{
+            margin-top: 80px;
+        }
+
+        .first-section h1, h2{
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .first-section h2{
+            font-size: 40px;
+            letter-spacing: 5px;
+            color: rgb(255, 255, 255);
+        }
+
+        .first-section  h1{
+            font-size: 100px;
+            letter-spacing: 15px;
+            color: rgb(255, 255, 255);
+        }
+
+        .first-section button{
+            background-color: rgb(10, 0, 27);
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            height: 60px;
+            width: 250px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 20px;
+            font-family: poppins;
+        }
+        */
+
+
+        @media only screen and (max-width: 798px) {
+            body {
+                 background-color: lightblue; 
+            }
+
+            header {
+                 padding: 15px 10px; /* Adjusted header padding on mobile */
+            }
+
+            .middle-header{
+                display: none;
+            }
+            .left-header{
+                display: none;
+            }
+            .mobile-nav{
+                display: flex; /* Show mobile toggle */
+                cursor: pointer;
+                 align-items: center;
+                 margin-right: 10px; /* Adjusted margin */
+            }
+
+             /* Removed button styling from mobile-nav as toggle-btn is an anchor */
+            
+            .mobile-nav button{
+                background: none;
+                border: none;
+            }
+
+            .mobile-nav button > i{
+                background: white;
+            }
+            
+
+            /* mobile-sidebar display is now controlled by JS class 'open' */
+            .mobile-sidebar{
+                 display: block; 
+            }
+            .hide{
+                display: none; 
+            }
+
+             h1.page-title {
+                 font-size: 1.8em; /* Adjust title size on mobile */
+                 margin: 30px 0;
+                 padding: 0 10px; /* Add horizontal padding on mobile */
+            }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="right-header">
+          <h4><span class="des-span">Port</span><span class="phixs-span">folio</span></h4>
+        </div>
+        <div class="middle-header">
+            <div class="nav-links">
+              <ul class="nav__links">
+                <li><a href="portfolio.html"><i class="fas fa-home"></i> &nbsp; Home</a></li>
+                <li><a href="homie.html"><i class="fas fa-user"></i> &nbsp; About</a></li>
+                <li><a href="interests.html"><i class="fas fa-briefcase"></i> &nbsp; Interest</a></li>
+                <li><a href="location.html"><i class="fas fa-briefcase"></i> &nbsp; Location</a></li>
+            </ul>
+            </div>
+        </div>
+        <div class="left-header">
+            <div class="social-links">
+              <ul class="social__links">
+                <li class="facebook"><a href="https://www.facebook.com/tizon.km"><i class="fab fa-facebook"></i></a></li>
+                <li class="instagram"><a href="https://www.instagram.com/ovx1e/?next=%2F"><i class="fab fa-twitter"></i></a></li>
+                
+            </ul>
+            </div>
+        </div>
+
+        <div class="mobile-nav">
+             <a class="toggle-btn"><i class="fas fa-bars"></i></a>
+            </div>
+
+    </header>
+
+     <h1 class="page-title" id="communications-title">
+        MY HOBBIES AND LIKES:
+    </h1>
+
+    <div class="side-bar desktop-sidebar mobile-sidebar hide" id="mobile-nav-sidebar">
+        <div class="mobile-top-header">
+            <div class="nav-links">
+                <ul class="nav__links">
+                     <li><i class="fas fa-home"></i>&nbsp;&nbsp;<a href="#home-section">Home</a></li>
+                    <li><i class="fas fa-user"></i>&nbsp;&nbsp;<a href="#about-section">About</a></li>
+                    <li><i class="fas fa-briefcase"></i>&nbsp;&nbsp;<a href="#projects-section">Projects</a></li>
+                    <li><i class="fas fa-briefcase"></i>&nbsp;&nbsp;<a href="#projects-section">Projects</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mobile-bottom-header">
+            <div class="social-links">
+                <ul class="social__links">
+                    <li class="facebook"><i class="fab fa-facebook mobile-i"></i>&nbsp;&nbsp;<a href="" class="mobile-a">Facebook</a></li>
+                    <li class="instagram"><i class="fab fa-twitter mobile-i"></i>&nbsp;&nbsp;<a href="" class="mobile-a">Twitter</a></li>
+                    <li class="instagram"><i class="fab fa-instagram mobile-i"></i>&nbsp;&nbsp;<a href="" class="mobile-a">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+       <div class="max-w-7xl mx-auto px-4 relative">
+        <button id="prevBtn" aria-label="Previous slide" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 rounded-full p-2 shadow z-10">
+            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+             <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+        <div id="slider" class="flex space-x-6 overflow-x-hidden no-scrollbar scroll-smooth">
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/guitar.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/pets.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/music.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/pictures.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/sketch.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/watch.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/guitar.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/pets.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/music.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/pictures.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/sketch.jpg" width="300"/>
+            <img class="flex-shrink-0 w-72 h-96 object-cover rounded-sm shadow-sm" height="400" src="images/watch.jpg" width="300"/>
+
+        </div>
+        <button id="nextBtn" aria-label="Next slide" class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 rounded-full p-2 shadow z-10">
+            <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+             <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+       </div>
+ 
+       <main class="max-w-4xl mx-auto px-6 py-12">
+        <h2 class="text-xl text-blue-600 font-light mb-4">
+        Welcome!  My name is Kayla Tizon, and I am an IT Student currently pursuing my studies at CvSU - Bacoor Cavite Campus. Residing in Las Pinas City Age of 20 y/o, My Hobbies and Likes
+        </h2>
+        <p class="text-base font-normal leading-relaxed">
+          Beyond my studies, I find enjoyment and balance in several key hobbies. Music is a significant passion, whether I'm playing the guitar or simply immersing myself in listening with headphones. The companionship of my pets, including cats and dogs, brings immense joy and comfort to my life. I also have a keen interest in photography, which allows me to capture moments and perspectives of the world around me. These activities provide a valuable creative outlet and help me relax and recharge.
+        </p>
+     </main>
+
+
+    <script>
+        // Smooth scroll behavior CSS is the preferred method, but this JS can be a fallback
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+         anchor.addEventListener('click', function (e) {
+               e.preventDefault();
+               document.querySelector(this.getAttribute('href')).scrollIntoView({
+                     behavior: 'smooth'
+                 });
+             });
+         });
+
+
+        // Slider functionality (keep this)
+        const slider = document.getElementById('slider');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        // Calculate slide width dynamically including gap
+        const firstSlide = slider.querySelector('img');
+        const slideStyles = getComputedStyle(firstSlide);
+        const slideMarginRight = parseFloat(slideStyles.marginRight);
+        const slideWidth = firstSlide.offsetWidth + slideMarginRight; // image width + gap
+
+        prevBtn.addEventListener('click', () => {
+            slider.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            slider.scrollBy({ left: slideWidth, behavior: 'smooth' });
+        });
+
+        // --- Mobile Sidebar Toggle Functionality ---
+        const toggleBtn = document.querySelector('.mobile-nav .toggle-btn');
+        const sidebar = document.getElementById('mobile-nav-sidebar'); // Make sure this ID is correct
+
+        // Get all links in the sidebar
+        const sidebarLinks = sidebar.querySelectorAll('a');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('open'); // Toggle the 'open' class
+            sidebar.classList.remove('hide'); // Ensure 'hide' is removed when opening
+        });
+
+        // Close sidebar when a link is clicked (for smooth scrolling within the page)
+         sidebarLinks.forEach(link => {
+             link.addEventListener('click', () => {
+                 // Check if the link is an internal page anchor (#)
+                 if (link.getAttribute('href').startsWith('#')) {
+                      sidebar.classList.remove('open'); // Close sidebar
+                      // Add a small delay to allow smooth scroll to start before hiding
+                      setTimeout(() => {
+                          sidebar.classList.add('hide');
+                      }, 500); // Adjust delay as needed
+                 }
+                 // If it's an external link or to another page, let default behavior happen
+             });
+         });
+
+        // Optional: Close sidebar when clicking outside of it
+        document.addEventListener('click', (event) => {
+             const isClickInsideSidebar = sidebar.contains(event.target);
+             const isClickOnToggle = toggleBtn.contains(event.target);
+
+             if (!isClickInsideSidebar && !isClickOnToggle && sidebar.classList.contains('open')) {
+                 sidebar.classList.remove('open');
+                 setTimeout(() => {
+                     sidebar.classList.add('hide');
+                 }, 500);
+             }
+        });
+    </script>
+</body>
+</html>
